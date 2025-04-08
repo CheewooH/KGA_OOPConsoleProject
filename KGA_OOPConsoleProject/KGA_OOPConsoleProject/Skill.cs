@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace KGA_OOPConsoleProject
 {
-    public class Map
+    public abstract class Skill
     {
+        
     }
 }

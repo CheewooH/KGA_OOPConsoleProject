@@ -1,6 +1,6 @@
 ﻿namespace KGA_OOPConsoleProject
 {
-    public class Character
+    public abstract class Character
     {
         // HP와 스트레스만 가지고 나머지 스탯은 장비로
         public string Name { get; set; }
