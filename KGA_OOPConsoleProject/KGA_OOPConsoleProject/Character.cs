@@ -17,16 +17,14 @@
                 }
             }
         }
-        public int Stress { get; set; }
         public double Dodge { get; set; }
         public double Critical { get; set; }
 
         private static Random random = new Random();
-        public Character(string name, int maxHp, int stress, double dodge = 0.1, double critical = 0.15)
+        public Character(string name, int maxHp, double dodge = 0.1, double critical = 0.15)
         {
             Name = name;
             Hp = maxHp;
-            Stress = stress;
             Dodge = dodge;
             Critical = critical;
         }
@@ -55,18 +53,6 @@
             }
             Hp -= damage;
             Console.WriteLine($"{damage}데미지를 받았다.");
-        }
-        public void AddStress(int stress)
-        {
-            Stress += stress;
-                if (stress > 100)
-            {
-                stress = 100;
-                Hp = 1;
-                Console.WriteLine($"{Name}의 스트레스 가 한계치에 도달했습니다!");
-                Console.WriteLine("죽음의 문턱");
-            }
-            Console.WriteLine($"{Name}의 스트레스 : {stress}");
         }
         public bool IsAlive()
         {
