@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KGA_OOPConsoleProject
+namespace KGA_OOPConsoleProject.Maps
 {
-    public class EnemyFactory
+    public class Ruins : Map
     {
-        // TODO 나중에 몹들 위치 추가하고 다시 돌아오기
+
     }
 }
