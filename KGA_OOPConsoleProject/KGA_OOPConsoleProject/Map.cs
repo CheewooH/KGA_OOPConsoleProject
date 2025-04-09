@@ -12,15 +12,27 @@ namespace KGA_OOPConsoleProject
         // 필요한 기능
         // 방 추가 및 연결 시작 방 선정
         public string Name { get; }
-        // 방 딕셔너리 선언 내부 적, 연결된 곳
-        public Dictionary<string, (List<Enemy> enemies,List<string> connections)> Rooms { get; }
-        public string StartingRoom { get; set; }
-        protected Map(string name)
+        protected char[,] Size { get; set; }
+        protected Dictionary<(int, int), List<Enemy>> Enemies { get; }
+        protected Map(string name, int x, int y)
         {
             Name = name;
-            Rooms = new Dictionary<string, (List<Enemy> enemies, List<string> connections)>();
-            InitializeRooms();
+            Size = new char[x, y];
+            Enemies = new Dictionary<(int, int), List<Enemy>>();
+            InitializeMap();
         }
-        protected abstract void InitializeRooms();
+        protected abstract void InitializeMap();
+        public void PrintMap()
+        {
+            Console.WriteLine($"{Name} 맵:");
+            for (int y = 0; y < Size.GetLength(1); y++)
+            {
+                for (int x = 0; x < Size.GetLength(0); x++)
+                {
+                    Console.Write(Size[x, y] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
