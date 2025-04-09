@@ -30,7 +30,7 @@ namespace KGA_OOPConsoleProject
             }
             Console.WriteLine($"{Name}의 스트레스: {Stress}");
         }
-        public bool Move(ConsoleKey key, char[,] size, int mapX, int mapY)
+        public bool Move(ConsoleKey key, char[,] tiles)
         {
             int X = this.X;
             int Y = this.Y;
@@ -53,13 +53,13 @@ namespace KGA_OOPConsoleProject
                     return false;
             }
             // 벽 체크
-            if (size[X, Y] == '#')
+            if (tiles[X, Y] == '#')
                 return false;
 
-            size[this.X, this.Y] = ' '; // 이전 위치 복구
+            tiles[this.X, this.Y] = '.'; // 이전 위치 복구
             this.X = X;
             this.Y = Y;
-            size[this.X, this.Y] = 'P'; // 플레이어 이동
+            tiles[this.X, this.Y] = 'P'; // 플레이어 이동
             return true;
         }
     }

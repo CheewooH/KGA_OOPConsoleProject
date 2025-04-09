@@ -8,6 +8,6 @@ namespace KGA_OOPConsoleProject
 {
     public abstract class Skill
     {
-        
+      //  TODO 아직 미구현
     }
 }

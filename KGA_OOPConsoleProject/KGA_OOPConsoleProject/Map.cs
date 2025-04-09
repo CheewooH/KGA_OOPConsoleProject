@@ -12,12 +12,14 @@ namespace KGA_OOPConsoleProject
         // 필요한 기능
         // 방 추가 및 연결 시작 방 선정
         public string Name { get; }
-        protected char[,] Size { get; set; }
+        protected char[,] Tiles { get; set; }
         protected Dictionary<(int, int), List<Enemy>> Enemies { get; }
+        public (int X, int Y) Door { get; protected set; }
+        public string NextMap { get; protected set; }
         protected Map(string name, int x, int y)
         {
             Name = name;
-            Size = new char[x, y];
+            Tiles = new char[x, y];
             Enemies = new Dictionary<(int, int), List<Enemy>>();
             InitializeMap();
         }
@@ -25,14 +27,18 @@ namespace KGA_OOPConsoleProject
         public void PrintMap()
         {
             Console.WriteLine($"{Name} 맵:");
-            for (int y = 0; y < Size.GetLength(1); y++)
+            for (int y = 0; y < Tiles.GetLength(1); y++)
             {
-                for (int x = 0; x < Size.GetLength(0); x++)
+                for (int x = 0; x < Tiles.GetLength(0); x++)
                 {
-                    Console.Write(Size[x, y] + " ");
+                    Console.Write(Tiles[x, y] + ".");
                 }
                 Console.WriteLine();
             }
+        }
+        public bool IsDoor(int x, int y)
+        {
+            return x == Door.X && y == Door.Y;
         }
     }
 }
