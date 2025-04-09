@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,8 @@ namespace KGA_OOPConsoleProject
     public class Player : Character
     {
         public int Stress { get; set; }
-
-        public Player(string name, int maxHp, int stress, double dodge = 0.1, double critical = 0.15)
-            : base(name, maxHp, dodge, critical)
+        public Player(string name, int maxHp, int stress, int attack, int defense, double dodge = 0.1, double criticalChance = 0.15)
+            : base(name, maxHp, attack, defense, dodge, criticalChance)
         {
             Stress = stress;
         }

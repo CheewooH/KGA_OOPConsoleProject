@@ -19,12 +19,16 @@
         }
         public double Dodge { get; set; }
         public double Critical { get; set; }
+        public int Attack { get; set; }
+        public int Defense { get; set; }
 
         private static Random random = new Random();
-        public Character(string name, int maxHp, double dodge = 0.1, double critical = 0.15)
+        public Character(string name, int maxHp, int attack, int defense, double dodge = 0.1, double critical = 0.15)
         {
             Name = name;
             Hp = maxHp;
+            Attack = attack;
+            Defense = defense;
             Dodge = dodge;
             Critical = critical;
         }
@@ -51,6 +55,7 @@
                 Console.WriteLine("회피했다!");
                 return;
             }
+            int reducedDamage = Math.Max(damage - Defense, 0); // Math.Max 두개의 값중 큰값을 반환하는 함수
             Hp -= damage;
             Console.WriteLine($"{damage}데미지를 받았다.");
         }

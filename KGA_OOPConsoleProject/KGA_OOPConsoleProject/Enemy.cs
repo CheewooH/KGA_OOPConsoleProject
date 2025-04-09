@@ -8,13 +8,11 @@ namespace KGA_OOPConsoleProject
 {
     public class Enemy : Character
     {
-        public int Attack { get; set; }
-        public int Defense { get; set; }
+
         public Enemy(string name, int maxHp, int attack, int defense, double dodge = 0.1, double criticalChance = 0.15)
-            : base(name, maxHp, dodge, criticalChance)
+            : base(name, maxHp, attack, defense, dodge, criticalChance)
         {
-            Attack = attack;
-            Defense = defense;
+           
         }
     }
 }
