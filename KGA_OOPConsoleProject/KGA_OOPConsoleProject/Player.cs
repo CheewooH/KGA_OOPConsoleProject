@@ -56,7 +56,7 @@ namespace KGA_OOPConsoleProject
             if (tiles[X, Y] == '#')
                 return false;
 
-            tiles[this.X, this.Y] = '.'; // 이전 위치 복구
+            tiles[this.X, this.Y] = ' '; // 이전 위치 복구
             this.X = X;
             this.Y = Y;
             tiles[this.X, this.Y] = 'P'; // 플레이어 이동

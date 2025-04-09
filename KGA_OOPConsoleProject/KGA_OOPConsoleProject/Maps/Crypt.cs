@@ -22,7 +22,7 @@ namespace KGA_OOPConsoleProject.Maps
                     if (y == 0 || y == Tiles.GetLength(1) - 1 || x == 0 || x == Tiles.GetLength(0) - 1)
                         Tiles[x, y] = '#';
                     else
-                        Tiles[x, y] = '.';
+                        Tiles[x, y] = ' ';
                 }
             }
 
