@@ -24,6 +24,7 @@ namespace KGA_OOPConsoleProject
             Enemies = new Dictionary<(int, int), List<Enemy>>();
         }
         protected abstract void InitializeMap();
+        // 맵 출력
         public void PrintMap()
         {
             Console.WriteLine($"{Name} 맵:");
@@ -47,6 +48,7 @@ namespace KGA_OOPConsoleProject
             }
             return new List<Enemy>();
         }
+        // 문 위치
         public (int X, int Y) GetDoorPos()
         {
             return Door;

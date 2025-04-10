@@ -85,6 +85,7 @@ namespace KGA_OOPConsoleProject
                     bool isCritical = false;
                     int damage = player.Cirtical(player.Attack, ref isCritical);
                     enemy.TakeDamage(damage);
+                    Console.WriteLine("=======================================");
                     Console.WriteLine($"{enemy.Name}에게 {damage} 데미지를 입혔습니다.");
                 }
             }
@@ -104,6 +105,7 @@ namespace KGA_OOPConsoleProject
                 int damage = enemy.Cirtical(enemy.Attack, ref isCritical);
                 Console.WriteLine($"{enemy.Name}의 공격!");
                 player.TakeDamage(damage);
+                Console.WriteLine($"{player.Name}이{damage}데미지 를 받았다");
             }
         }
     }

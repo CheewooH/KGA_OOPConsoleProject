@@ -37,7 +37,7 @@
             {
                 isCritical = true;
                 damage = (int)Math.Round(damage * 1.5);
-                Console.WriteLine($"크리티컬!");
+                Console.WriteLine($"크리티컬 데미지 : {damage}");
             }
             else
             {

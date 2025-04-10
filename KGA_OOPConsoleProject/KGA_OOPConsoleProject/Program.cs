@@ -10,9 +10,10 @@ namespace KGA_OOPConsoleProject
             // 캐릭터, 적, 맵을 가지고 캐릭터의 스탯은 장비로
             // 체력은 던전이 끝나면 다시 리셋 스트레스는 유지
             // 마을은 텍스트로 하자
+
             Player bandit = new Player("도적", 20, 0, 5, 2); // 플레이어
             string currentMap = "마을";   // 현재 지역
-            Map ruins = new Ruins(); // TODO 적이 맵다른곳 갔다오면 리젠됨 메인에서 선언후 픽스예정
+            Map ruins = new Ruins();
             Map crypt = new Crypt();
             Map currentLocation = null;  // 현재 위치
 
@@ -26,13 +27,14 @@ namespace KGA_OOPConsoleProject
 
                     case "던전":
                         if (currentLocation == null)
-                            currentLocation = new Ruins();
+                            currentLocation = ruins;
 
+                        // 플레이어 시작 위치 설정
                         bandit.X = 1;
                         bandit.Y = 1;
                         currentLocation.Tiles[bandit.X, bandit.Y] = 'P';
 
-                        bool exploring = true;
+                        bool exploring = true; // 던전 탐험 루프
                         while (exploring)
                         {
                             Console.Clear();
@@ -43,7 +45,7 @@ namespace KGA_OOPConsoleProject
                             if (bandit.Move(key, currentLocation.Tiles))
                             {
                                 var enemies = currentLocation.GetEnemiesPos(bandit.X, bandit.Y);
-                                if (enemies.Count > 0)
+                                if (enemies.Count > 0) // 현재 위치에 적이 있으면 전투 시작
                                 {
                                     Battle battle = new Battle(bandit, enemies);
                                     battle.StartBattle();
@@ -61,13 +63,13 @@ namespace KGA_OOPConsoleProject
                                 if (bandit.X == door.X && bandit.Y == door.Y)
                                 {
                                     if (currentLocation is Ruins)
-                                        currentLocation = new Crypt();
+                                        currentLocation = crypt;
                                     else if (currentLocation is Crypt)
-                                        currentLocation = new Ruins();
+                                        currentLocation = ruins;
                                 }
 
                                 // 두 던전 모두 클리어 확인
-                                if (new Ruins().IsCleared() && new Crypt().IsCleared())
+                                if (ruins.IsCleared() && crypt.IsCleared())
                                 {
                                     Console.Clear();
                                     Console.WriteLine("모든 던전을 클리어했습니다!");
