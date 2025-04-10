@@ -52,9 +52,16 @@ namespace KGA_OOPConsoleProject
                 default:
                     return false;
             }
-            // 벽 체크
-            if (tiles[X, Y] == '#')
+            // 맵 밖으로 못나가게
+            if (X >= 0 && Y >= 0 && X < tiles.GetLength(0) && Y < tiles.GetLength(1))
+            {
+                if (tiles[X, Y] == '#')
+                    return false;
+            }
+            else
+            {
                 return false;
+            }
 
             tiles[this.X, this.Y] = ' '; // 이전 위치 복구
             this.X = X;

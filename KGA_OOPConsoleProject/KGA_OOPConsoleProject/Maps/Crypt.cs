@@ -8,9 +8,12 @@ namespace KGA_OOPConsoleProject.Maps
 {
     public class Crypt : Map
     {
-        public Crypt() : base("묘지", 7, 5)
+        public Crypt() : base("지하실", 7, 5)
         {
-            Door = (1, 2);
+            Door = (0, 2);
+            NextMap = null;
+            beforeMap = "폐허";
+            InitializeMap();
         }
 
         protected override void InitializeMap()

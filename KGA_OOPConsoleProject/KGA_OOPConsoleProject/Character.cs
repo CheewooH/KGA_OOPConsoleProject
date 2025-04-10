@@ -2,7 +2,6 @@
 {
     public abstract class Character
     {
-        // HP와 스트레스만 가지고 나머지 스탯은 장비로
         public string Name { get; set; }
         private int Hp;
         public int HP
@@ -46,8 +45,6 @@
             }
             return damage;
         }
-
-        
         public void TakeDamage(int damage)
         {
             if (random.NextDouble() < Dodge)
@@ -57,7 +54,6 @@
             }
             int reducedDamage = Math.Max(damage - Defense, 0); // Math.Max 두개의 값중 큰값을 반환하는 함수
             Hp -= damage;
-            Console.WriteLine($"{damage}데미지를 받았다.");
         }
         public bool IsAlive()
         {

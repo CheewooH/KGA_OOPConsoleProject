@@ -10,7 +10,10 @@ namespace KGA_OOPConsoleProject.Maps
     {
         public Ruins() : base("폐허",7,5)
         {
-            Door = (5, 2);
+            Door = (6, 2);
+            NextMap = "지하실";
+            beforeMap = null;
+            InitializeMap();
         }
 
         protected override void InitializeMap()

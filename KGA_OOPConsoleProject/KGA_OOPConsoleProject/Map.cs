@@ -14,14 +14,14 @@ namespace KGA_OOPConsoleProject
         public string Name { get; }
         public char[,] Tiles { get; set; }
         protected Dictionary<(int, int), List<Enemy>> Enemies { get; }
-        public (int X, int Y) Door { get; protected set; }
+        public (int X, int Y) Door { get; set; }
         public string NextMap { get; protected set; }
+        public string beforeMap { get; protected set; }
         protected Map(string name, int x, int y)
         {
             Name = name;
             Tiles = new char[x, y];
             Enemies = new Dictionary<(int, int), List<Enemy>>();
-            InitializeMap();
         }
         protected abstract void InitializeMap();
         public void PrintMap()
@@ -31,13 +31,13 @@ namespace KGA_OOPConsoleProject
             {
                 for (int x = 0; x < Tiles.GetLength(0); x++)
                 {
-                    Console.Write(Tiles[x, y]);
+                    Console.Write(Tiles[x, y] + " ");
                 }
                 Console.WriteLine();
             }
         }
         // 적 위치
-        public List<Enemy> GetEnemiesAtPosition(int x, int y)
+        public List<Enemy> GetEnemiesPos(int x, int y)
         {
             if (Enemies.ContainsKey((x, y)))
             {
@@ -47,10 +47,21 @@ namespace KGA_OOPConsoleProject
             }
             return new List<Enemy>();
         }
-
-        public bool IsDoor(int x, int y)
+        public (int X, int Y) GetDoorPos()
         {
-            return x == Door.X && y == Door.Y;
+            return Door;
+        }
+        public bool IsCleared()
+        {
+            for (int y = 0; y < Tiles.GetLength(1); y++)
+            {
+                for (int x = 0; x < Tiles.GetLength(0); x++)
+                {
+                    if (Tiles[x, y] == 'E')
+                        return false;
+                }
+            }
+            return true;
         }
     }
 }
